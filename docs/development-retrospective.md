@@ -1,6 +1,6 @@
 # 开发与实机测试复盘
 
-本次目标是 HarmonyOS-only、原生 ArkTS/ArkUI、真实 Mihomo VPN/TUN 的自用客户端，目标设备为 Mate 60 Pro / API 24。构建、日常操作和实际验收结果见 [README](README.md)。本文记录问题与后续工作方法，不替代验收记录。
+本次目标是 HarmonyOS-only、原生 ArkTS/ArkUI、真实 Mihomo VPN/TUN 的自用客户端，目标设备为 Mate 60 Pro / API 24。构建、日常操作和实际验收结果见 [项目指南](project-guide.md)。本文命令和行内源码路径相对仓库根目录，Markdown 链接相对所在文档。本文记录问题与后续工作方法，不替代验收记录。
 
 没有完整的分阶段计时数据，因此不估算各问题的耗时占比。下面区分已确认的问题、现场操作误判和仍未确认的原因；一次最终包通过，不等于已经证明长期稳定性。
 
@@ -103,10 +103,10 @@
 
 实现定位：
 
-- [核心和物理网络绑定](harmony/core/main.go)、[N-API 桥接](harmony/entry/src/main/cpp/bridge.cpp)。
-- [VPN 扩展生命周期](harmony/entry/src/main/ets/vpn/FlClashVpnAbility.ets)、[配置事务/控制器/监控](harmony/entry/src/main/ets/services/AppService.ets)。
-- [UI 状态绑定](harmony/entry/src/main/ets/pages/Index.ets)、[私有持久化](harmony/entry/src/main/ets/storage/PrivateStore.ets)。
-- [核心构建](harmony/scripts/build-core.sh)、[HAP 构建](harmony/scripts/build-hap.sh)、[安装结果检查](harmony/scripts/install-hap.sh)、[工具链准备](harmony/scripts/setup-go-toolchain.sh)。
+- [核心和物理网络绑定](../harmony/core/main.go)、[N-API 桥接](../harmony/entry/src/main/cpp/bridge.cpp)。
+- [VPN 扩展生命周期](../harmony/entry/src/main/ets/vpn/FlClashVpnAbility.ets)、[配置事务/控制器/监控](../harmony/entry/src/main/ets/services/AppService.ets)。
+- [UI 状态绑定](../harmony/entry/src/main/ets/pages/Index.ets)、[私有持久化](../harmony/entry/src/main/ets/storage/PrivateStore.ets)。
+- [核心构建](../harmony/scripts/build-core.sh)、[HAP 构建](../harmony/scripts/build-hap.sh)、[安装结果检查](../harmony/scripts/install-hap.sh)、[工具链准备](../harmony/scripts/setup-go-toolchain.sh)。
 
 以下命令以 macOS 默认 DevEco 安装为例；`DEVICE` 从 `list targets` 取得，端口必须替换为本次测试实际创建的规则，不要删除其他开发工具的连接：
 
