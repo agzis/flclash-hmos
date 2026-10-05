@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.5.0)
+project(flclashcore)
+add_library(mihomo SHARED IMPORTED)
+set_target_properties(mihomo PROPERTIES IMPORTED_LOCATION "${CMAKE_CURRENT_SOURCE_DIR}/../../../../libs/arm64-v8a/libmihomo.so")
+add_library(flclashcore SHARED bridge.cpp)
+set_target_properties(flclashcore PROPERTIES OUTPUT_NAME "flclashcore")
+target_link_libraries(flclashcore PUBLIC mihomo libace_napi.z.so)
